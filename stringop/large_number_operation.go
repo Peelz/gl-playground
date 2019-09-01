@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func stringPlus(number1 string, number2 string) string {
+func largeNumberInDream(number1 string, number2 string) string {
 	reverse1 := reverseString(number1)
 	reverse2 := reverseString(number2)
 	ans := ""
@@ -58,5 +58,13 @@ func reverseString(str string) string {
 }
 
 func main() {
-	fmt.Println("ans", stringPlus("999", "11"))
+	var str1 string
+	var str2 string
+
+	fmt.Println("number 1")
+	fmt.Scanf("%s", &str1)
+	fmt.Println("number 2")
+	fmt.Scanf("%s", &str2)
+
+	fmt.Println("ans", largeNumberInDream(str1, str2))
 }
