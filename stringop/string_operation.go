@@ -11,36 +11,37 @@ func stringPlus(number1 string, number2 string) string {
 	ans := ""
 	carry := 0
 	flag := 0
-	for reverse1 != "" || reverse2 != "" {
+	for reverse1 != "" || reverse2 != "" || carry != 0 {
 		op := 0
-		carry = 0
 
-		if reverse1 == "" {
+		if reverse1 == "" && reverse2 != "" {
 			tmp, _ := strconv.ParseInt(string(reverse2[0]), 10, 32)
 			op = int(tmp) + carry
 			reverse2 = reverse2[1:]
-		} else if reverse2 == "" {
+		} else if reverse2 == "" && reverse1 != "" {
 			tmp, _ := strconv.ParseInt(string(reverse1[0]), 10, 32)
 			op = int(tmp) + carry
-			reverse1 = reverse2[1:]
+			reverse1 = reverse1[1:]
 
-		} else {
+		} else if reverse2 != "" || reverse1 != "" {
 			tmp1, _ := strconv.ParseInt(string(reverse1[0]), 10, 32)
 			tmp2, _ := strconv.ParseInt(string(reverse2[0]), 10, 32)
-			// println(reverse1, reverse2)
-
 			op = int(tmp1) + int(tmp2) + carry
 			reverse1 = reverse1[1:]
 			reverse2 = reverse2[1:]
 
+		} else {
+			ans = strconv.Itoa(carry) + ans
+			return ans
 		}
 
 		if op >= 10 {
 			carry = 1
 			op = op % 10
+		} else {
+			carry = 0
 		}
 		ans = strconv.Itoa(op) + ans
-		// fmt.Println(ans, flag)
 		flag++
 	}
 
@@ -57,5 +58,5 @@ func reverseString(str string) string {
 }
 
 func main() {
-	fmt.Println("ans", stringPlus("123", "456"))
+	fmt.Println("ans", stringPlus("999", "11"))
 }
