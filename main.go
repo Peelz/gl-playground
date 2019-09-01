@@ -5,7 +5,6 @@ import (
 )
 
 func main() {
-	numbers := "123"
 
-	fmt.Println(numbers[3])
+	fmt.Println("Welcome to :D")
 }
