@@ -1,4 +1,4 @@
-package twosum
+package problems
 
 func twoSum(nums []int, target int) []int {
 	table := make(map[int]int)
